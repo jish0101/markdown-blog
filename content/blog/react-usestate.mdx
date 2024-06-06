@@ -1,0 +1,52 @@
+---
+title: "React useState: Keeping Your Components Dynamic"
+description: React components are great, but what if you want them to change and react to user interaction? Enter useState - the secret weapon for managing state in your functional components. Let's explore how it works!
+date: 2024-06-07
+tags: ["react"]
+published: true
+---
+
+## React useState: Keeping Your Components Dynamic
+
+## Static vs Dynamic Components
+
+Imagine a website with a button that always says "Click Me." While functional, it's not very engaging. React components allow you to create dynamic UIs that change based on user interaction or data.
+
+This is where `useState` comes in! It's a special hook introduced in React 16.8 that lets you add state to functional components. State is like a memory that your component can hold onto, allowing it to update and react to changes.
+
+## Catching a State with useState
+
+Think of `useState` like a fishing rod. You cast it out (call the hook) and catch a piece of state (a value) that you can use within your component. Here's an example:
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+In this example:
+
+- We use `useState` to create a state variable called `count` with an initial value of 0.
+- We also get a function called `setCount` that allows us to update the `count` value.
+- When the button is clicked, the `onClick` handler calls `setCount` with the new value (`count + 1`), effectively updating the state and re-rendering the component with the new count.
+
+## useState in Action
+
+With `useState`, our `Counter` component becomes dynamic. Every time the button is clicked, the `count` state is updated, and the component re-renders to display the new click count.
+
+## More Than Just Numbers
+
+`useState` isn't limited to numbers. You can use it to store strings, objects, or arrays, making your components truly adaptable to different scenarios.
+
+## Unleashing Dynamic UIs
+
+By mastering `useState`, you unlock the power of dynamic React components. They can respond to user actions, update based on fetched data, and create interactive and engaging user experiences.
+
+So, the next time you want your React components to come alive, remember `useState` - your trusty hook for managing state and building dynamic UIs.

@@ -1,0 +1,99 @@
+---
+title: "React Context: Sharing State Like a Pro"
+description: Struggling to pass props down a long chain of components in React? Context is here to save the day! Learn how to use the Context API to share state across distant components without the hassle of prop drilling.
+date: 2024-06-07
+tags: ["react"]
+published: true
+---
+
+## React Context: Sharing State Like a Pro
+
+## The Peril of Prop Drilling
+
+Imagine a tall building with information you need on the top floor. Prop drilling in React is like climbing each stair, passing the data (props) down every level. It's tedious and error-prone.
+
+This is where Context comes in! It's a powerful feature in React that allows you to share state across your component hierarchy without explicit prop drilling. Think of it like an elevator that takes you directly to the information you need, regardless of your floor.
+
+## Building Your Context
+
+Creating a Context is like setting up a central communication channel. Here's how:
+
+```jsx
+const ThemeContext = React.createContext("light");
+
+function createThemeContext() {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  return { theme, toggleTheme };
+}
+
+export const ThemeProvider = ThemeContext.Provider;
+export const useTheme = useContext(ThemeContext);
+```
+
+Here's what we've created:
+
+- `ThemeContext`: This is the central communication channel.
+- `createThemeContext`: This function creates the state (`theme`) and provides a way to toggle it (`toggleTheme`).
+- `ThemeProvider`: This component wraps your application and provides the context value (`theme` and `toggleTheme`) to its children.
+- `useTheme`: This hook allows any component within the `ThemeProvider` to access the context value.
+
+## Using Context in Action
+
+Now, let's see how to use our `ThemeContext` in different components:
+
+```jsx
+function Navbar() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <nav style={{ backgroundColor: theme === "light" ? "white" : "black" }}>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+    </nav>
+  );
+}
+
+function Content() {
+  const { theme } = useTheme();
+
+  return (
+    <div style={{ color: theme === "light" ? "black" : "white" }}>
+      This content respects your theme preference!
+    </div>
+  );
+}
+
+function App() {
+  const themeContext = createThemeContext();
+
+  return (
+    <ThemeProvider value={themeContext}>
+      <Navbar />
+      <Content />
+    </ThemeProvider>
+  );
+}
+```
+
+In this example:
+
+- `Navbar` and `Content` use the `useTheme` hook to access the context value (`theme` and potentially `toggleTheme`).
+- `App` creates the theme context with `createThemeContext` and wraps its children (`Navbar` and `Content`) with the `ThemeProvider`.
+
+## Benefits of Context
+
+- **Reduced Prop Drilling:** No more passing props down long chains of components.
+- **Improved Code Readability:** Makes your component structure clearer and easier to understand.
+- **Global State Management:** Share complex data across distant components without a headache.
+
+## When to Use Context
+
+Context is ideal for sharing state that needs to be accessed by many components at different levels of the hierarchy. However, for simple data flow between parent and child components, prop drilling might still be suitable.
+
+## Sharing with Confidence
+
+By using React Context, you can share state across your application effectively. It promotes clean code organization and avoids the pitfalls of prop drilling. So next time you need to share state across distant components, remember Context - your powerful tool for global state management in React.

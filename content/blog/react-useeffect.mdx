@@ -1,0 +1,63 @@
+---
+title: "React useEffect: Mastering Side Effects in Your Components"
+description: React components are fantastic for building UIs, but what about tasks outside the rendering process? Enter useEffect - the hook that lets you manage side effects like data fetching, subscriptions, and timers, keeping your components clean and efficient.
+date: 2024-06-07
+tags: ["react"]
+published: true
+---
+
+## React useEffect: Mastering Side Effects in Your Components
+
+## Beyond the Render: The World of Side Effects
+
+Imagine building a beautiful React application. However, it doesn't fetch data from an API or update automatically. This is where side effects come in! They are actions that happen outside the typical React rendering cycle, like fetching data, setting up subscriptions, or running timers.
+
+While React components are great for rendering UI, they don't handle side effects directly. This is where `useEffect` enters the scene.
+
+## Casting Your Line with useEffect
+
+Think of `useEffect` like a fishing lure. You cast it out (call the hook) to perform a specific side effect within your component. Here's a basic example:
+
+```jsx
+function UserList() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.example.com/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  }, []);
+
+  return (
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+In this example:
+
+- We use `useEffect` to fetch user data from an API.
+- The function passed to `useEffect` defines the side effect (fetching data).
+- The empty dependency array `[]` tells React to run this effect only after the initial render.
+
+## Keeping Your Hooks in Check
+
+The beauty of `useEffect` lies in its control. You can specify when the side effect runs by providing a dependency array as the second argument. This array tells React when to re-run the effect based on changes in the listed dependencies.
+
+## More Than Just Data Fetching
+
+`useEffect` isn't limited to fetching data. You can use it for various side effects like:
+
+- Setting up subscriptions (e.g., to a websocket)
+- Running timers (e.g., for animations)
+- Cleaning up after subscriptions or timers (to avoid memory leaks)
+
+## Side Effects Done Right
+
+By mastering `useEffect`, you can manage side effects effectively within your React components. This keeps your code clean, organized, and avoids unnecessary side effects running at the wrong times.
+
+So, the next time your React component needs to interact with the outside world or perform actions beyond rendering, remember `useEffect` - your trusty hook for managing side effects.
