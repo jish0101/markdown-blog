@@ -28,18 +28,22 @@ export async function GET(req: NextRequest) {
           <div tw="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
+              className="lucide lucide-coffee"
             >
-              <path d="M4 11a9 9 0 0 1 9 9" />
-              <path d="M4 4a16 16 0 0 1 16 16" />
-              <circle cx="5" cy="19" r="1" />
+              <path d="M10 2v2" />
+              <path d="M14 2v2" />
+              <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
+              <path d="M6 2v2" />
             </svg>
-            <p tw="ml-2 font-bold text-2xl">Blog</p>
+            <p tw="ml-2 font-bold text-2xl">BLOG</p>
           </div>
           <div tw="flex flex-col flex-1 py-10">
             <div tw="flex text-xl uppercase font-bold tracking-tight font-normal">
