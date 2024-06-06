@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 const primaryFont = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: { template: `%s | ${siteConfig.name}`, default: "Jishan's Blog" },
+  title: { template: `%s | ${siteConfig.name}`, default: "BLOG" },
   description: siteConfig.description,
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url),
 };
